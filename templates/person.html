@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增病人</title>
+  <script src="/static/jquery.min.js"></script>
+</head>
+<body>
+<p><a href="/">回到首页</a></p>
+<h1>新增患者</h1>
+<form action="/add/person" method="post">
+    <p>姓名:<input type="text" name="name"/></p>
+    <p>电话:<input type="text" name="phone"/></p>
+    <h1>新增病例</h1>
+
+    <textarea name="zz" id='zz' style="width:200px;height:80px;" placeholder="在这填写症状"></textarea>
+    <p><input type="button" value="查询旧药方" id="queryYF" name="queryYF"/></p>
+    <div id="YFs">
+
+    </div>
+    <textarea name="yf" style="width:200px;height:80px;" placeholder="在这填写药方"></textarea>
+    <p><input type="submit" value="保存病例"/></p>
+</form>
+<script>
+    $('#queryYF').click(function () {
+        var var_zz = document.getElementById('zz').value
+
+        $.getJSON('/query/yf', {'zz': var_zz}, function (res) {
+            var tab = document.getElementById('YFs')
+            p = ''
+            for (i = 0; i < res.data.length; i++) {
+                yf = res.data[i]
+                p = p +"<p>症状：" +yf.zz + "<span>  </span>药方：" + yf.yf
+            }
+            tab.innerHTML = p
+
+        })
+    })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/static/jquery.min.js"></script>
+    <title>姓名查询</title>
+</head>
+<body>
+<p><a href="/">回到首页</a></p>
+<p>姓名:<input type="text" name="name" id="name"/></p>
+<p><input type="button" value="查询姓名" id="query" name="query"/></p>
+<div id="names">
+
+</div>
+<script>
+    $('#query').click(function () {
+        var name = document.getElementById('name').value
+
+        $.post('/query/person', {'name': name}, function (res) {
+            var tab = document.getElementById('names')
+            p = ''
+            for (i = 0; i < res.data.length; i++) {
+                name = res.data[i]['name']
+                p_id = res.data[i]['p_id']
+                p = p + "<p><a href='/detail?p_id=" + p_id + "'>" + name + "</a></p>"
+            }
+            tab.innerHTML = p
+
+        })
+    })
+</script>
+
+</body>
+</html>
