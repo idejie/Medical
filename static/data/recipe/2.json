@@ -1,0 +1,10 @@
+{
+  "id": 1,
+  "name": "药方2",
+  "zz": "ss",
+  "medicines": [
+    {"id": 1,"name": "药品1","desc": "备注1","func": ""},
+    {"id": 3,"name": "药品3","desc": "备注3","func": ""}
+  ],
+  "desc": ""
+}

@@ -1,0 +1,17 @@
+{
+  "id": 1,
+  "zz": "头疼",
+  "recipes": [
+    1
+  ],
+  "desc": [
+    {
+      "type": "image",
+      "loc": "data/res/1.jpg"
+    },
+     {
+      "type": "other",
+      "loc": "data/res/1.zip"
+    }
+  ]
+}

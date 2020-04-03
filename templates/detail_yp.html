@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="/static/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+    <link rel="stylesheet" href="/static/css/app.css" type="text/css"/>
+    <title>药品：【{{ yp.name }}】</title>
+</head>
+<body class="card-body">
+<h4><a href="/">回到首页</a></h4>
+<h1 class="title">药品</h1>
+<form action="/detail/yp" method="post">
+    <p ><input name="mid" id='mid' value="{{ yp.id }}" hidden ="hidden"/></p>
+    <p><input name="name" id='name' placeholder="在这填写药品名" value="{{ yp.name }}"/></p>
+    <p><input name="func" id='func' placeholder="在这填写药品功能" value="{{ yp.func }}"/></p>
+    <p><textarea name="desc" id='desc' style="width:200px;height:80px;" placeholder="备注">{{ yp.desc }}</textarea></p>
+    <p><input type="submit" value="修改此药品"/></p>
+</form>
+
+</body>
+</html>

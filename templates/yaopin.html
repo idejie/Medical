@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/static/jquery.min.js"></script>
+    <title>新增药品</title>
+    <link rel="stylesheet" type="text/css" href="/static/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="/static/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+    <link rel="stylesheet" href="/static/css/app.css" type="text/css"/>
+</head>
+<body class="card-body">
+<h4><a href="/">回到首页</a></h4>
+<h1 class="title">新增药品</h1>
+<form action="/add/yp" method="post">
+    <p><input name="name" id='name' placeholder="在这填写药品名" style="width:200px;"/></p>
+    <p> <textarea name="func" id='func'  style="width:200px;height:80px;" placeholder="在这填写药品功能"></textarea></p>
+   <br>
+    <textarea name="desc" id='desc' style="width:200px;height:80px;" placeholder="备注"></textarea>
+    <p><input type="submit" value="提交此药品"/></p>
+</form>
+<p class="text-success">{{ msg }}</p>
+</body>
+</html>

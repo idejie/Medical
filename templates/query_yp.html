@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="/static/jquery.min.js"></script>
+    <title>药品查询</title>
+    <link rel="stylesheet" type="text/css" href="/static/lib/perfect-scrollbar/css/perfect-scrollbar.min.css"/>
+    <link rel="stylesheet" type="text/css"
+          href="/static/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
+    <link rel="stylesheet" href="/static/css/app.css" type="text/css"/>
+</head>
+<body class="card-body">
+<h4><a href="/">回到首页</a></h4>
+<h1>药品</h1>
+<p>药名:<input type="text" name="name" id="name"/></p>
+<p>功能:<input type="text" name="func" id="func"/></p>
+<p>备注:<input type="text" name="desc" id="desc"/></p>
+<p><input type="button" value="查询药品" id="query" name="query"/></p>
+<div id="names">
+
+</div>
+<script>
+    $('#query').click(function () {
+        var name = document.getElementById('name').value
+        var func = document.getElementById('func').value
+        var desc = document.getElementById('desc').value
+        $.post('/query/yp', {'name': name, 'func': func, "desc": desc, "all": false}, function (res) {
+            var tab = document.getElementById('names')
+            console.log(res)
+            p = '<ul>'
+            for (i = 0; i < res.data.length; i++) {
+                name = res.data[i]['name']
+                func = res.data[i]['func']
+                desc = res.data[i]['desc']
+                m_id = res.data[i]['id']
+                p = p + "<li>【药品】： "
+                    + name
+                    + "<br><span></span>【功能】： "
+                    + func
+                    + "<br>【备注】："
+                    + desc
+                    + "<br><a class='text-danger' href='/del/yp?mid=" + m_id + "'> 删除</a>"
+                    + "<span></span>"
+                    + "<a class='text-danger' href='/detail/yp?mid=" + m_id + "'> 修改</a>"
+                    + "</li><br>"
+            }
+            tab.innerHTML = p
+
+        })
+    })
+</script>
+
+</body>
+</html>
